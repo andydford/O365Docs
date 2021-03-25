@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Development Scenarios</title>
+    <style>
+    </style>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+    <style>
+        .task-list-item {
+            list-style-type: none;
+        }
+
+        .task-list-item-checkbox {
+            margin-left: -20px;
+            vertical-align: middle;
+        }
+    </style>
+
+
+
+</head>
+
+<body class="vscode-body vscode-light">
+    <h1 id="development-scenarios">Development Scenarios</h1>
+    <h2 id="prism">PRISM</h2>
+    <p>You can register the service in PRISM as you would normally do for DI</p>
+    <pre><code class="language-csharp"><div><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ConfigureContainer</span>(<span class="hljs-params"></span>)</span>
+{
+    <span class="hljs-keyword">base</span>.ConfigureContainer();
+    .
+    .
+    .
+    <span class="hljs-keyword">var</span> service = O365Service.GraphService;
+    .
+    .
+    .
+    Container.RegisterInstance&lt;IO365Service&gt;(service);
+}  
+</div></code></pre>
+    <h2 id="hosted">Hosted</h2>
+    <pre><code class="language-csharp"><div><span class="hljs-keyword">public</span> <span class="hljs-keyword">partial</span> <span class="hljs-keyword">class</span> <span class="hljs-title">App</span> : <span class="hljs-title">Application</span>
+{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> IHost _host;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>)</span>
+    {
+        _host = CreateHostBuilder().Build();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> IHostBuilder <span class="hljs-title">CreateHostBuilder</span>(<span class="hljs-params"><span class="hljs-keyword">string</span>[] args = <span class="hljs-literal">null</span></span>)</span>
+    {
+        <span class="hljs-keyword">return</span> Host.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((context, configurationBuilder) =&gt;
+            {
+                configurationBuilder.SetBasePath(context.HostingEnvironment.ContentRootPath);
+                configurationBuilder.AddJsonFile(<span class="hljs-string">&quot;graphsettings.json&quot;</span>, optional: <span class="hljs-literal">false</span>);
+            })
+            .ConfigureServices((context, services) =&gt;
+            {
+                services.AddSingleton&lt;IO365Service, O365Service&gt;();
+                services.AddScoped&lt;MainWindow&gt;();
+                services.AddScoped&lt;MainWindowViewModel&gt;();
+                services.AddScoped(mw =&gt; <span class="hljs-keyword">new</span> MainWindow(mw.GetRequiredService&lt;MainWindowViewModel&gt;()));
+            });
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnStartup</span>(<span class="hljs-params">StartupEventArgs e</span>)</span>
+    {
+        <span class="hljs-keyword">await</span> _host.StartAsync();
+
+        Window window = _host.Services.GetRequiredService&lt;MainWindow&gt;();
+
+        window.Show();
+
+        <span class="hljs-keyword">base</span>.OnStartup(e);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnExit</span>(<span class="hljs-params">ExitEventArgs e</span>)</span>
+    {
+        <span class="hljs-keyword">await</span> _host.StopAsync(System.TimeSpan.FromSeconds(<span class="hljs-number">5</span>));
+
+        _host.Dispose();
+
+        <span class="hljs-keyword">base</span>.OnExit(e);
+    }
+}
+</div></code></pre>
+    <h2 id="on-the-fly">On the Fly</h2>
+    <pre><code class="language-csharp"><div>IO365Service service = O365Service.GraphService;
+<span class="hljs-keyword">var</span> myDetails = service.GetMyDetailsAsync();
+myDetails.ContinueWith(d =&gt;
+{
+    <span class="hljs-keyword">var</span> result = myDetails.Result;
+});
+</div></code></pre>
+    <p><a href="index.html">Home</a> | <a href="settings.html">Back: Settings for the <em>graphsettings.json</em>
+            file</a></p>
+
+</body>
+
+</html>

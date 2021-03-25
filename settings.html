@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Settings for the &midast;graphsettings&period;json&midast; file</title>
+  <style>
+  </style>
+
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  </style>
+  <style>
+    .task-list-item {
+      list-style-type: none;
+    }
+
+    .task-list-item-checkbox {
+      margin-left: -20px;
+      vertical-align: middle;
+    }
+  </style>
+
+
+
+</head>
+
+<body class="vscode-body vscode-light">
+  <h1 id="settings-for-the-graphsettingsjson-file">Settings for the <em>graphsettings.json</em> file</h1>
+  <p>The Hmrc.Bdapp.O365 package uses a json file to hold the required settings for the authentication and authorization
+    of the BDApp. The BDApp will already have been registered in Azure and the relevant delegate permissions obtained.
+    This is the format required for the json file that must be manually created in the main project with the name
+    <em>graphsettings.json</em>.</p>
+  <pre><code class="language-json"><div>{
+  <span class="hljs-attr">&quot;GraphSettings&quot;</span>: {
+    <span class="hljs-attr">&quot;clientId&quot;</span>: <span class="hljs-string">&quot;a8ac3916-e445-488d-bed1-dbbd940c986f&quot;</span>,
+    <span class="hljs-attr">&quot;tenantId&quot;</span>: <span class="hljs-string">&quot;4567eb26-e6e1-4226-835c-0c6a707cd25d&quot;</span>,
+    <span class="hljs-attr">&quot;replyUri&quot;</span>: <span class="hljs-string">&quot;msala8ac3916-e445-488d-bed1-dbbd940c986f://auth&quot;</span>,
+    <span class="hljs-attr">&quot;bdappId&quot;</span>: <span class="hljs-string">&quot;111066&quot;</span>,
+    <span class="hljs-attr">&quot;scopes&quot;</span>: [
+      <span class="hljs-string">&quot;Files.ReadWrite.All&quot;</span>,
+      <span class="hljs-string">&quot;Sites.Manage.All&quot;</span>,
+      <span class="hljs-string">&quot;User.Read&quot;</span>,
+      <span class="hljs-string">&quot;Mail.Send.Shared&quot;</span>,
+      <span class="hljs-string">&quot;Mail.ReadWrite.Shared&quot;</span>,
+      <span class="hljs-string">&quot;Group.Read.All&quot;</span>
+    ]
+  }
+}
+</div></code></pre>
+  <blockquote>
+    <p>Make sure that you set the properties of this file to <b><em>Build Action None</em></b> and <b><em>Copy to Output
+          Directory Always</em></b></p>
+  </blockquote>
+  <p>As each key-value pair suggests you need to provide the corresponding values in the <em>clientId, tenantId,
+      replyUri</em>. The value of th <em>replyUri</em> is interchangeable with its other name of <em>redirectUri</em>
+    although you must not change the key name given here.</p>
+  <p>The <b><em>bdappId</em></b> is used in the creation of the token cache file which is written to
+    <b><em>%userprofile%\AppData\Roaming\BDApp\111066\111066.msalcache.bin3</em></b> in this example. Each BDApp will
+    have its own cache folder by BDAppId.</p>
+  <p>The <b><em>bdappId</em></b> is used in the creation of the token cache file which is written to
+    <b><em>%userprofile%\AppData\Roaming\BDApp\111066\111066.msalcache.bin3</em></b> in this example. Each BDApp will
+    have its own cache folder by BDAppId.</p>
+  <p>The last key-value pair is the <em>scopes</em> having its key and its value being an array of delegates.</p>
+  <blockquote>
+    <p>Please refer to the <a href="https://docs.microsoft.com/en-us/graph/permissions-reference"
+        target="_blank">Microsoft Graph API Permissions</a> for full reference. Only the delegate permissions that have
+      been assigned during the app registration process can be used in the <em>graphsettings.json</em> file.</p>
+  </blockquote>
+  <p><a href="index.html">Home</a> | <a href="install.html">Back: Installing NuGet package</a> | <a
+      href="scenarios.html">Next: Development Scenarios</a></p>
+
+</body>
+
+</html>

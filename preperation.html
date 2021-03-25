@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Preperation</title>
+    <style>
+    </style>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+    <style>
+        .task-list-item {
+            list-style-type: none;
+        }
+
+        .task-list-item-checkbox {
+            margin-left: -20px;
+            vertical-align: middle;
+        }
+    </style>
+
+
+
+</head>
+
+<body class="vscode-body vscode-light">
+    <h1 id="preperation">Preperation</h1>
+    <p>The Hmrc.Bdapp.O365 package is built using the <em>ProjectReferences</em> configuration and as such needs to be
+        installed as a <em>PackageReference</em> and not <em>Package.config</em></p>
+    <p>If your existing project has a <em>packages.config</em> then in the solution explorer right click on the
+        <em>packages.config</em> of the project you wish to install the package and select <em>Migrate packages.config
+            to PackageReference...</em></p>
+    <p><img src="\images\PackageReference.png" alt="PackageReference"></p>
+    <p>This will display a dialogue showing existing packages and if there are any issues.</p>
+    <blockquote>
+        <p>It is recommended that you refer to <a
+                href="https://docs.microsoft.com/en-us/nuget/consume-packages/migrate-packages-config-to-package-reference#migration-steps"
+                target="_blank">Microsoft Graph API</a> on the Microsoft documentation site. Here you can read as to why
+            specifying new future projects to use <em>PackageReference</em> is a best practice and also the benefits for
+            source control etc. This does not apply to <a href="http://ASP.NET">ASP.NET</a> or C++ projects.</p>
+    </blockquote>
+    <blockquote>
+        <p>New projects should be created as PackageReference.</p>
+    </blockquote>
+    <p><a href="index.html">Home</a> | <a href="install.html">Next: Installing NuGet package</a></p>
+
+</body>
+
+</html>

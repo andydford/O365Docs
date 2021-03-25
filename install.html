@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Installing NuGet package</title>
+    <style>
+    </style>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+    <style>
+        .task-list-item {
+            list-style-type: none;
+        }
+
+        .task-list-item-checkbox {
+            margin-left: -20px;
+            vertical-align: middle;
+        }
+    </style>
+
+
+
+</head>
+
+<body class="vscode-body vscode-light">
+    <h1 id="installing-nuget-package">Installing NuGet package</h1>
+    <p>The NuGet package is hosted in the DevDDA DevOps artifact library. In order to install the package from Visual
+        Studio you will need to add the artifact repository to your list of NuGet sources.</p>
+    <p>Open the NuGet Package Manager -&gt; Package Manager Settings from the Tools menu in Visual Studio and select
+        Package Sources.</p>
+    <p><img src="\images\ToolsPackageManage.png" alt=""></p>
+    <p>Click on the <img src="\images\addbutton.png" alt=""> and enter the following in the Name and Source text boxes
+        respectively:</p>
+    <blockquote>
+        <p>Name = DevDDA<br>
+            Source = <a
+                href="https://pkgs.dev.azure.com/DevDDA/_packaging/DevDDA/nuget/v3/index.json">https://pkgs.dev.azure.com/DevDDA/_packaging/DevDDA/nuget/v3/index.json</a>
+        </p>
+    </blockquote>
+    <p><img src="\images\SetUpFeed.png" alt=""></p>
+    <p>Once done click on Update then OK. This feed is now available in the NuGet package viewer as shown below.</p>
+    <p><img src="\images\sourcesetting.png" alt=""></p>
+    <blockquote>
+        <p>In order for the NuGet package manager to be able to find DevDDA packages make sure you have selected DevDDA
+            from the settings or All.</p>
+    </blockquote>
+    <p>Select Browse in the package manager view and search for Hmrc.BDApp.O365. This should display the package but if
+        not make sure which NuGet repository you have set Package source to.</p>
+    <p>Depending on your Visual Studio settings you may be presented with the following dialogue asking the desired
+        format of the package manager.</p>
+    <p><img src="\images\selectpackageref.png" alt=""></p>
+    <p>Select the option shown, PackageReference in project file.</p>
+    <blockquote>
+        <p>This package will not install if your project has not been converted to PackageReference.</p>
+    </blockquote>
+    <p><a href="index.html">Home</a> | <a href="preperation.html">Back: Preperation</a> | <a href="settings.html">Next:
+            Settings for the <em>graphsettings.json</em> file</a></p>
+
+</body>
+
+</html>
