@@ -9,32 +9,90 @@
 </head>
 
 <body>
-    <div class="flex">
-        <h1 id="the-purpose-of-hmrcbdappo365">Hmrc.BDApp.O365 Documentation</h1>
-    </div>
-    <p><a
-            href="https://dev.azure.com/DevDDA/Hmrc.BDApp.O365/_packaging?_a=package&amp;feed=02cea248-3d30-4e41-806e-e613324a9ae1&amp;package=42ef2122-5429-4062-921f-3335aadc6bdb&amp;preferRelease=true"><img
-                src="https://feeds.dev.azure.com/DevDDA/_apis/public/Packaging/Feeds/02cea248-3d30-4e41-806e-e613324a9ae1/Packages/42ef2122-5429-4062-921f-3335aadc6bdb/Badge"
-                alt="Hmrc.BDApp.O365 package in DevDDA feed in Azure Artifacts"></a></p>
-    <p>This project, and its resulting NuGet package, was developed to enable the remediation of existing BDApps to be
-        able to implement interaction with O365 by providing generic MS Graph API to the developer.</p>
-    <blockquote>
-        <p>It is required/expected that the developer is familiar with the<a
-                href="https://docs.microsoft.com/en-us/graph/" target="_blank"> Microsoft Graph API</a> and how it
-            relates to Azure and O365.</p>
-    </blockquote>
-    <blockquote>
-        <p>The NuGet package does not provide for specific application scenarios. Those scenarios need to be part of the
-            application or as an extension to this package.</p>
-    </blockquote>
-    <h3 id="contents">Contents</h3>
-    <p>The following lists areas of explanation</p>
-    <ol>
-        <li><a href="preperation.html">Preperation</a></li>
-        <li><a href="install.html">Installing NuGet package</a></li>
-        <li><a href="settings.html">Settings for the <em>graphsettings.json</em> file</a></li>
-        <li><a href="scenarios.html">Development Scenarios</a></li>
-    </ol>
+    <nav class="bg-gray-800">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="relative flex items-center justify-between h-16">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <button type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-gray-800 focus:ring-white">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img class="block lg:hidden h-8 w-auto"
+                            src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
+                        <img class="hidden lg:block h-8 w-auto"
+                            src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                            alt="Workflow">
+                    </div>
+                    <div class="hidden sm:block sm:ml-6">
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                                aria-current="page">Dashboard</a>
+                            <a href="#"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Team</a>
+                            <a href="#"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                            <a href="#"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold text-gray-900">Hmrc.BDApp.O365 Documentation</h1>
+            <p><a
+                    href="https://dev.azure.com/DevDDA/Hmrc.BDApp.O365/_packaging?_a=package&amp;feed=02cea248-3d30-4e41-806e-e613324a9ae1&amp;package=42ef2122-5429-4062-921f-3335aadc6bdb&amp;preferRelease=true"><img
+                        src="https://feeds.dev.azure.com/DevDDA/_apis/public/Packaging/Feeds/02cea248-3d30-4e41-806e-e613324a9ae1/Packages/42ef2122-5429-4062-921f-3335aadc6bdb/Badge"
+                        alt="Hmrc.BDApp.O365 package in DevDDA feed in Azure Artifacts"></a></p>
+        </div>
+    </header>
+    <main>
+        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <div class="px-4 py-6 sm:px-0">
+                <div class="border-2 px-8 py-8 border-solid border-gray-200 rounded-md h-96">
+                    <p>This project, and its resulting NuGet package, was developed to enable the remediation of
+                        existing BDApps
+                        to
+                        be
+                        able to implement interaction with O365 by providing generic MS Graph API to the developer.</p>
+                        <p>It is required/expected that the developer is familiar with the<a
+                                href="https://docs.microsoft.com/en-us/graph/" target="_blank"> Microsoft Graph API</a>
+                            and how
+                            it
+                            relates to Azure and O365.</p>
+                        <p>The NuGet package does not provide for specific application scenarios. Those scenarios need
+                            to be
+                            part of
+                            the
+                            application or as an extension to this package.</p>
+                    <h3 id="contents">Contents</h3>
+                    <p>The following lists areas of explanation</p>
+                    <ol>
+                        <li><a href="preperation.html">Preperation</a></li>
+                        <li><a href="install.html">Installing NuGet package</a></li>
+                        <li><a href="settings.html">Settings for the <em>graphsettings.json</em> file</a></li>
+                        <li><a href="scenarios.html">Development Scenarios</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </main>
 
 </body>
 
